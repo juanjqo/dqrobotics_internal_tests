@@ -10,10 +10,8 @@ cd ~/utils/qpOASES/ && mkdir -p build && \
 cd ~/utils/qpOASES/build  && cmake .. && make -j$(nproc) && make install
 
 # Install qpoases interface proposed by qlin960618
-RUN mkdir -p ~/utils && \
-cd ~/utils && git clone https://github.com/qlin960618/cpp-interface-qpoases.git && \
-cd ~/utils/cpp-interface-qpoases && mkdir -p build && \
-cd ~/utils/cpp-interface-qpoases/build && cmake .. && make -j$(nproc) && make install
+RUN source /etc/bash_env && build_from_github https://github.com/qlin960618/cpp-interface-qpoases.git
+
 
 # Install proxsuite
 RUN mkdir -p ~/utils && \
@@ -21,17 +19,14 @@ cd ~/utils && git clone https://github.com/Simple-Robotics/proxsuite.git --recur
 cd ~/utils/proxsuite && mkdir -p build && \
 cd ~/utils/proxsuite/build  && cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_WITH_VECTORIZATION_SUPPORT=OFF && make -j$(nproc) && make install
 
-# Install proxqp interface
-RUN mkdir -p ~/utils && \
-cd ~/utils && git clone https://github.com/juanjqo/cpp-interface-proxqp.git && \
-cd ~/utils/cpp-interface-proxqp && mkdir -p build && \
-cd ~/utils/cpp-interface-proxqp/build && cmake .. && make -j$(nproc) && make install
-
 
 # Install DQ Robotics for C++ (development branch)
 RUN add-apt-repository ppa:dqrobotics-dev/development && apt-get update && apt-get install -y libdqrobotics
 
 
 # Clone dqrobotics_internal_tests
-RUN mkdir -p ~/git && git clone https://github.com/juanjqo/dqrobotics_internal_tests.git
+RUN mkdir -p ~/git && cd ~/git && git clone https://github.com/juanjqo/dqrobotics_internal_tests.git
+
+
+RUN ldconfig
 
