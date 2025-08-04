@@ -4,7 +4,6 @@
 #include <proxsuite/proxqp/dense/dense.hpp>
 #include <proxsuite/linalg/veg/util/dbg.hpp>
 #include <proxsuite/proxqp/utils/random_qp_problems.hpp>
-#include <dqrobotics/solvers/DQ_PROXQPSolver.h>
 #include <dqrobotics/solvers/DQ_QPOASESSolver.h>
 
 
