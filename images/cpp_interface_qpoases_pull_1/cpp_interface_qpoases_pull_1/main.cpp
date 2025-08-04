@@ -32,8 +32,6 @@ int main()
         VectorXd beq = qp_random.b;
         MatrixXd A = qp_random.C;
         VectorXd b = qp_random.u;
-        MatrixXd Aeq_;
-        VectorXd beq_;
 
         DQ_robotics::DQ_PROXQPSolver proxqp_solver;
         auto u_proxqp = proxqp_solver.solve_quadratic_program(H, f, A, b, Aeq, beq);
